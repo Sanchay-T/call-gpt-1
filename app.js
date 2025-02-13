@@ -19,6 +19,11 @@ ExpressWs(app);
 app.use(express.json());
 app.use(express.static('public'));
 
+// Add explicit route for root
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: './public' });
+});
+
 const PORT = process.env.PORT || 3000;
 
 // Default prompts that can be overridden through the web interface
